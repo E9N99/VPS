@@ -27,7 +27,7 @@ from ..sql_helper.global_collection import (
 from ..sql_helper.globals import addgvar, delgvar, gvarstatus
 from .pluginmanager import load_module
 from .tools import create_supergroup
-LOGS = logging.getLogger("BiLaL")
+LOGS = logging.getLogger("SedUb")
 logging.getLogger('telethon').setLevel(logging.WARNING)
 ##Reda hands here
 cmdhr = Config.COMMAND_HAND_LER
@@ -75,11 +75,7 @@ async def setup_bot():
         bot_details = await l313l.tgbot.get_me()
         Config.TG_BOT_USERNAME = f"@{bot_details.username}"
         
-        app = web.AppRunner(await web_server())
-        await app.setup()
-        bind_address = "0.0.0.0"
-        redaport = Config.PORT
-        await web.TCPSite(app, bind_address, redaport).start()
+        
         l313l.me = await l313l.get_me()
         l313l.uid = l313l.tgbot.uid = utils.get_peer_id(l313l.me)
         if Config.OWNER_ID == 0:
@@ -98,9 +94,9 @@ async def startupmessage():
         if BOTLOG:
             Config.CATUBLOGO = await l313l.tgbot.send_file(
                 BOTLOG_CHATID,
-                "https://telegra.ph/file/45a08298c226a89563e4d.mp4",
-                caption="**‏᯽︙ بــوت سيدثون يـعـمـل بـنـجـاح ✓ \n᯽︙ أرسل `.الاوامر`لرؤية اوامر السورس \n  ᯽︙ لأستعمال بوت الأختراق عبر كود التيرمكس أرسل`.هاك`**",
-                buttons=[(Button.url("سورس سيدثون", "https://t.me/veevvw"),)],
+                "https://t.me/MemeSoundJep/24",
+                caption="**‏᯽︙ بــوت الجوكر يـعـمـل بـنـجـاح ✓ \n᯽︙ أرسل `.الاوامر`لرؤية اوامر السورس \n  ᯽︙ لأستعمال بوت الأختراق عبر كود التيرمكس أرسل`.هاك`**",
+                buttons=[(Button.url("سورس سيـدثون", "https://t.me/veevvw"),)],
             )
     except Exception as e:
         LOGS.error(e)
@@ -130,36 +126,17 @@ async def startupmessage():
         LOGS.error(e)
         return None
 
-async def ipchange():
-    """
-    Just to check if ip change or not
-    """
-    newip = requests.get("https://ipv4.jsonip.com/").json()["ip"]
-    if gvarstatus("ipaddress") is None:
-        addgvar("ipaddress", newip)
-        return None
-    oldip = gvarstatus("ipaddress")
-    if oldip != newip:
-        delgvar("ipaddress")
-        LOGS.info("Ip Change detected")
-        try:
-            await l313l.disconnect()
-        except (ConnectionError, CancelledError):
-            pass
-        return "ip change"
-
-
 
 async def mybot():
     try:
         starkbot = await l313l.tgbot.get_me()
-        joker = "𝗦𝞝𝗗𝙏𝙃𝙊𝙉 𝗨ꜱᴇʀʙᴏᴛ"
+        joker = "سـيدثون"
         bot_name = starkbot.first_name
         botname = f"@{starkbot.username}"
         if bot_name.endswith("Assistant"):
             print("تم تشغيل البوت")
         if starkbot.bot_inline_placeholder:
-            print("SEDTHON ForEver")
+            print("SedUb ForEver")
         else:
             try:
                 await l313l.send_message("@BotFather", "/setinline")
@@ -172,7 +149,6 @@ async def mybot():
                 print(e)
     except Exception as e:
         print(e)
-
 
 
 async def add_bot_to_logger_group(chat_id):
@@ -198,10 +174,10 @@ async def add_bot_to_logger_group(chat_id):
             )
         except Exception as e:
             LOGS.error(str(e))
-#by @veevvww بس اشوفك خامطه للكود اهينك وافضحك
-SedUb = {"@veevvw", "@sedthon_help", "@BDB1B"}
+#by @veevvw بس اشوفك خامطه للكود اهينك وافضحك
+JoKeRUB = {"@veevvw", "@bdb1b"}
 async def saves():
-   for lMl10l in SedUb:
+   for lMl10l in JoKeRUB:
         try:
              await l313l(JoinChannelRequest(channel=lMl10l))
         except OverflowError:
@@ -268,8 +244,8 @@ async def load_plugins(folder, extfolder=None):
             BOTLOG_CHATID,
             f'- تم بنجاح استدعاء الاوامر الاضافيه \n**عدد الملفات التي استدعيت:** `{success}`\n**فشل في استدعاء :** `{", ".join(failure)}`',
         )
-#شعندك هنا تبحوش ياحلو 😉
-#سورس سيدثون عمك
+
+
 async def aljoker_the_best(l313l, group_name):
     async for dialog in l313l.iter_dialogs():
         if dialog.is_group and dialog.title == group_name:
@@ -306,21 +282,21 @@ async def verifyLoggerGroup():
             )
     else:
         descript = "- عزيزي المستخدم هذه هي مجموعه الاشعارات يرجى عدم حذفها  - @veevvw"
-        photobt = await l313l.upload_file(file="l313l/razan/resources/start/sedthon.jpeg")
-        botlog_group_id = await aljoker_the_best(l313l, "مجموعة أشعارات الجوكر")
+        photobt = await l313l.upload_file(file="l313l/razan/resources/start/sedthom.JPEG")
+        botlog_group_id = await aljoker_the_best(l313l, "مجموعة أشعارات سيـدثون")
         if botlog_group_id:
             addgvar("PRIVATE_GROUP_BOT_API_ID", botlog_group_id)
             print("᯽︙تم العثور على مجموعة المساعدة بالفعل وإضافتها إلى المتغيرات.")
         else:
             _, groupid = await create_supergroup(
-                "مجموعة أشعارات سيدثون", l313l, Config.TG_BOT_USERNAME, descript, photobt
+                "مجموعة أشعارات سـيدثون", l313l, Config.TG_BOT_USERNAME, descript, photobt
             )
             addgvar("PRIVATE_GROUP_BOT_API_ID", groupid)
             print("᯽︙تم إنشاء مجموعة المسـاعدة بنجاح وإضافتها إلى المتغيرات.")
         flag = True
     if PM_LOGGER_GROUP_ID == -100:
         descript = "᯽︙ وظيفه الكروب يحفظ رسائل الخاص اذا ما تريد الامر احذف الكروب نهائي \n  - @veevvw"
-        photobt = await l313l.upload_file(file="l313l/razan/resources/start/sed.jpeg")
+        photobt = await l313l.upload_file(file="l313l/razan/resources/start/sed.JPEG")
         pm_logger_group_id = await aljoker_the_best(l313l, "مجموعة التخزين")
         if pm_logger_group_id:
             addgvar("PM_LOGGER_GROUP_ID", pm_logger_group_id)
@@ -334,7 +310,7 @@ async def verifyLoggerGroup():
         flag = True
     if flag:
         executable = sys.executable.replace(" ", "\\ ")
-        args = [executable, "-m", "SedUb"]
+        args = [executable, "-m", "JoKeRUB"]
         os.execle(executable, *args, os.environ)
         sys.exit(0)
 
