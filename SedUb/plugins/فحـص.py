@@ -5,7 +5,7 @@ import time
 import psutil
 from datetime import datetime
 from platform import python_version
-
+#BiLaL
 from telethon import version, events
 from telethon.tl import types, functions
 from telethon.tl.types import UserStatusOnline as onn
