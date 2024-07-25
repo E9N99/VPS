@@ -94,8 +94,8 @@ async def startupmessage():
         if BOTLOG:
             Config.CATUBLOGO = await l313l.tgbot.send_file(
                 BOTLOG_CHATID,
-                "https://t.me/MemeSoundJep/24",
-                caption="**‏᯽︙ بــوت الجوكر يـعـمـل بـنـجـاح ✓ \n᯽︙ أرسل `.الاوامر`لرؤية اوامر السورس \n  ᯽︙ لأستعمال بوت الأختراق عبر كود التيرمكس أرسل`.هاك`**",
+                "https://telegra.ph/file/45a08298c226a89563e4d.mp4",
+                caption="**‏᯽︙ بــوت سيـدثون يـعـمـل بـنـجـاح ✓ \n᯽︙ أرسل `.الاوامر`لرؤية اوامر السورس \n  ᯽︙ لأستعمال بوت الأختراق عبر كود التيرمكس أرسل`.هاك`**",
                 buttons=[(Button.url("سورس سيـدثون", "https://t.me/veevvw"),)],
             )
     except Exception as e:
@@ -175,9 +175,9 @@ async def add_bot_to_logger_group(chat_id):
         except Exception as e:
             LOGS.error(str(e))
 #by @veevvw بس اشوفك خامطه للكود اهينك وافضحك
-JoKeRUB = {"@veevvw", "@bdb1b"}
+SedUb = {"@veevvw", "@bdb1b"}
 async def saves():
-   for lMl10l in JoKeRUB:
+   for lMl10l in SedUb:
         try:
              await l313l(JoinChannelRequest(channel=lMl10l))
         except OverflowError:
@@ -282,7 +282,7 @@ async def verifyLoggerGroup():
             )
     else:
         descript = "- عزيزي المستخدم هذه هي مجموعه الاشعارات يرجى عدم حذفها  - @veevvw"
-        photobt = await l313l.upload_file(file="l313l/razan/resources/start/sedthom.JPEG")
+        photobt = await l313l.upload_file(file="l313l/razan/resources/start/sedthom.jpeg")
         botlog_group_id = await aljoker_the_best(l313l, "مجموعة أشعارات سيـدثون")
         if botlog_group_id:
             addgvar("PRIVATE_GROUP_BOT_API_ID", botlog_group_id)
@@ -296,7 +296,7 @@ async def verifyLoggerGroup():
         flag = True
     if PM_LOGGER_GROUP_ID == -100:
         descript = "᯽︙ وظيفه الكروب يحفظ رسائل الخاص اذا ما تريد الامر احذف الكروب نهائي \n  - @veevvw"
-        photobt = await l313l.upload_file(file="l313l/razan/resources/start/sed.JPEG")
+        photobt = await l313l.upload_file(file="l313l/razan/resources/start/sed.jpeg")
         pm_logger_group_id = await aljoker_the_best(l313l, "مجموعة التخزين")
         if pm_logger_group_id:
             addgvar("PM_LOGGER_GROUP_ID", pm_logger_group_id)
@@ -310,7 +310,7 @@ async def verifyLoggerGroup():
         flag = True
     if flag:
         executable = sys.executable.replace(" ", "\\ ")
-        args = [executable, "-m", "JoKeRUB"]
+        args = [executable, "-m", "SedUb"]
         os.execle(executable, *args, os.environ)
         sys.exit(0)
 
